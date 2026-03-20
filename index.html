@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhishek Shah — AI/ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+
+/* ════════════════════════════════════════════════
+   GODMODE RESUME — ABHISHEK SHAH
+   Aesthetic: Dark industrial / precision engineering
+   Inspired by circuit boards, terminal UIs, and 
+   brutalist editorial design.
+   ════════════════════════════════════════════════ */
+
+:root {
+  --ink:       #0a0c10;
+  --paper:     #f5f4f0;
+  --rule:      #d8d4cc;
+  --muted:     #7a7672;
+  --accent:    #c8401a;
+  --accent2:   #1a6dc8;
+  --mono-sm:   "DM Mono", monospace;
+  --sans:      "DM Sans", sans-serif;
+  --display:   "Syne", sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 13.5px; }
+
+body {
+  background: #e8e5df;
+  font-family: var(--sans);
+  color: var(--ink);
+  min-height: 100vh;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/* ── PAGE SHELL ── */
+.page {
+  background: var(--paper);
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.04),
+    0 8px 24px rgba(0,0,0,.08),
+    0 32px 64px rgba(0,0,0,.08);
+}
+
+/* corner crop marks */
+.page::before, .page::after {
+  content: "";
+  position: absolute;
+  width: 18px; height: 18px;
+  border-color: var(--accent);
+  border-style: solid;
+}
+.page::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.page::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+/* ── HEADER BAND ── */
+.header {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 2.8rem 3rem 2.4rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: end;
+  position: relative;
+  overflow: hidden;
+}
+
+/* background grid lines */
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+/* accent rule on left */
+.header::after {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--accent);
+}
+
+.name-block {
+  position: relative;
+  z-index: 1;
+}
+
+.name-label {
+  font-family: var(--mono-sm);
+  font-size: .7rem;
+  letter-spacing: .12em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: .6rem;
+  opacity: .9;
+}
+
+h1 {
+  font-family: var(--display);
+  font-size: 3.4rem;
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: .95;
+  color: #fff;
+  margin-bottom: .7rem;
+}
+
+.title-tag {
+  font-family: var(--mono-sm);
+  font-size: .8rem;
+  color: rgba(255,255,255,.55);
+  letter-spacing: .04em;
+}
+
+/* ── CONTACT BLOCK ── */
+.contact-block {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  align-items: flex-end;
+}
+
+.ci {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: var(--mono-sm);
+  font-size: .72rem;
+  color: rgba(255,255,255,.6);
+  transition: color .15s;
+}
+.ci a { color: rgba(255,255,255,.6); text-decoration: none; }
+.ci a:hover, .ci:hover { color: #fff; }
+
+.ci svg {
+  width: 13px; height: 13px;
+  fill: var(--accent);
+  flex-shrink: 0;
+  opacity: .85;
+}
+
+/* ── STATUS BAR ── */
+.status-bar {
+  background: var(--accent);
+  padding: .5rem 3rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.status-item {
+  font-family: var(--mono-sm);
+  font-size: .68rem;
+  letter-spacing: .08em;
+  color: #fff;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.5);
+  flex-shrink: 0;
+}
+.status-dot.green { background: #7fff7f; box-shadow: 0 0 6px #7fff7f; }
+
+/* ── BODY LAYOUT ── */
+.body-grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  background: #f0ede6;
+  padding: 2.5rem 1.6rem;
+  border-right: 1px solid var(--rule);
+}
+
+.sb-section { margin-bottom: 2.2rem; }
+
+.sb-label {
+  font-family: var(--mono-sm);
+  font-size: .62rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: .4rem;
+  margin-bottom: .9rem;
+}
+
+/* skill pills */
+.pill-group { display: flex; flex-wrap: wrap; gap: .3rem; }
+
+.pill {
+  font-family: var(--mono-sm);
+  font-size: .65rem;
+  padding: .22rem .55rem;
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  background: #fff;
+  letter-spacing: .02em;
+  line-height: 1.4;
+}
+
+.pill.accent { background: var(--ink); color: #fff; border-color: var(--ink); }
+.pill.red    { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* sidebar text items */
+.sb-item {
+  font-size: .82rem;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: .5rem;
+  padding-left: .8rem;
+  position: relative;
+}
+.sb-item::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: .7rem;
+  top: .05em;
+}
+
+.sb-stat {
+  font-family: var(--display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: .15rem;
+}
+.sb-stat-label {
+  font-family: var(--mono-sm);
+  font-size: .65rem;
+  color: var(--muted);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: .5rem;
+}
+
+/* ── MAIN CONTENT ── */
+.main {
+  padding: 2.5rem 2.8rem;
+}
+
+/* ── SECTION HEADER ── */
+.section { margin-bottom: 2.4rem; }
+
+.sec-heading {
+  font-family: var(--display);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  margin-bottom: 1.2rem;
+}
+.sec-heading::before {
+  content: "";
+  display: block;
+  width: 20px; height: 2px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.sec-heading::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* ── SUMMARY ── */
+.summary-text {
+  font-size: .95rem;
+  line-height: 1.7;
+  color: #2a2a2a;
+}
+.summary-text strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.highlight-tag {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--mono-sm);
+  font-size: .65rem;
+  padding: .1rem .4rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  margin: 0 .1rem;
+}
+
+/* ── JOB ENTRY ── */
+.job {
+  margin-bottom: 1.8rem;
+  padding-bottom: 1.8rem;
+  border-bottom: 1px dashed var(--rule);
+  position: relative;
+}
+.job:last-child { border-bottom: none; padding-bottom: 0; }
+
+/* timeline dot */
+.job::before {
+  content: "";
+  position: absolute;
+  left: -2.8rem;
+  top: .4rem;
+  width: 8px; height: 8px;
+  border: 2px solid var(--accent);
+  background: var(--paper);
+  border-radius: 50%;
+}
+
+.jobs-wrap {
+  position: relative;
+  padding-left: 0;
+}
+
+.job-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: .35rem;
+  gap: 1rem;
+}
+
+.job-title {
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.job-company {
+  font-family: var(--mono-sm);
+  font-size: .72rem;
+  color: var(--muted);
+  margin-top: .15rem;
+  letter-spacing: .02em;
+}
+
+.job-date {
+  font-family: var(--mono-sm);
+  font-size: .68rem;
+  color: var(--accent);
+  background: rgba(200,64,26,.08);
+  padding: .2rem .5rem;
+  letter-spacing: .04em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border: 1px solid rgba(200,64,26,.2);
+}
+
+ul.bullets {
+  list-style: none;
+  padding: 0;
+  margin-top: .6rem;
+}
+ul.bullets li {
+  font-size: .85rem;
+  line-height: 1.6;
+  color: #333;
+  padding-left: 1.2rem;
+  position: relative;
+  margin-bottom: .35rem;
+}
+ul.bullets li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: .78rem;
+  top: .05em;
+  font-weight: 500;
+}
+ul.bullets li strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+ul.bullets li a {
+  color: var(--accent2);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color .15s;
+}
+ul.bullets li a:hover { border-color: var(--accent2); }
+
+/* ── PROJECT CARDS ── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .9rem;
+}
+
+.proj-card {
+  border: 1px solid var(--rule);
+  padding: 1rem 1.1rem;
+  position: relative;
+  background: #fff;
+  transition: box-shadow .2s, border-color .2s;
+}
+.proj-card:hover {
+  box-shadow: 4px 4px 0 var(--ink);
+  border-color: var(--ink);
+}
+
+.proj-card::before {
+  content: attr(data-index);
+  position: absolute;
+  top: .6rem; right: .8rem;
+  font-family: var(--mono-sm);
+  font-size: .6rem;
+  color: var(--rule);
+  font-weight: 500;
+}
+
+.proj-name {
+  font-family: var(--display);
+  font-size: .92rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: .3rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.proj-link {
+  font-family: var(--mono-sm);
+  font-size: .6rem;
+  color: var(--accent2);
+  text-decoration: none;
+  border: 1px solid rgba(26,109,200,.3);
+  padding: .1rem .35rem;
+  transition: background .15s;
+}
+.proj-link:hover { background: rgba(26,109,200,.08); }
+
+.proj-desc {
+  font-size: .8rem;
+  line-height: 1.55;
+  color: #4a4a4a;
+}
+
+/* ── EDUCATION ── */
+.edu-block {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--rule);
+  background: #fff;
+}
+
+.edu-degree {
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: .2rem;
+}
+
+.edu-school {
+  font-family: var(--mono-sm);
+  font-size: .72rem;
+  color: var(--muted);
+  margin-bottom: .4rem;
+}
+
+.edu-courses {
+  font-size: .8rem;
+  color: #555;
+  line-height: 1.5;
+}
+.edu-courses span {
+  display: inline-block;
+  font-family: var(--mono-sm);
+  font-size: .65rem;
+  background: #f0ede6;
+  border: 1px solid var(--rule);
+  padding: .12rem .4rem;
+  margin: .15rem .15rem 0 0;
+  color: var(--ink);
+}
+
+/* ── FOOTER BAND ── */
+.footer-band {
+  background: var(--ink);
+  padding: .8rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-band .mono {
+  font-family: var(--mono-sm);
+  font-size: .62rem;
+  color: rgba(255,255,255,.3);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.footer-band .mono span { color: var(--accent); }
+
+/* ── PRINT ── */
+@media print {
+  body { background: white; padding: 0; }
+  .page { box-shadow: none; }
+  .page::before, .page::after { display: none; }
+  .proj-card:hover { box-shadow: none; border-color: var(--rule); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 720px) {
+  .header { grid-template-columns: 1fr; gap: 1.2rem; }
+  .contact-block { align-items: flex-start; }
+  .body-grid { grid-template-columns: 1fr; }
+  .sidebar { border-right: none; border-bottom: 1px solid var(--rule); }
+  .projects-grid { grid-template-columns: 1fr; }
+  h1 { font-size: 2.4rem; }
+  .main { padding: 2rem 1.5rem; }
+  .status-bar { padding: .5rem 1.5rem; flex-wrap: wrap; gap: .8rem; }
+  .header { padding: 2rem 1.5rem; }
+}
+
+/* entry animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page { animation: fadeUp .45s ease both; }
+
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ══ HEADER ══ -->
+  <header class="header">
+    <div class="name-block">
+      <div class="name-label">// résumé · 2025</div>
+      <h1>Abhishek<br>Shah</h1>
+      <div class="title-tag">AI/ML Engineer &amp; Technical Project Manager</div>
+    </div>
+    <div class="contact-block">
+      <div class="ci">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        +977 981 587 3277
+      </div>
+      <div class="ci">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Kathmandu, Nepal
+      </div>
+      <div class="ci">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <a href="mailto:abhishek.aimarine@gmail.com">abhishek.aimarine@gmail.com</a>
+      </div>
+      <div class="ci">
+        <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+        <a href="https://linkedin.com/in/theabhishekshah" target="_blank">linkedin/theabhishekshah</a>
+      </div>
+      <div class="ci">
+        <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/></svg>
+        <a href="https://github.com/abhiverse01" target="_blank">github/abhiverse01</a>
+      </div>
+      <div class="ci">
+        <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <a href="https://abhishekshah.vercel.app" target="_blank">abhishekshah.vercel.app</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ STATUS BAR ══ -->
+  <div class="status-bar">
+    <div class="status-item">
+      <div class="status-dot green"></div>
+      Open to Opportunities
+    </div>
+    <div class="status-item">
+      <div class="status-dot"></div>
+      4+ Years Experience
+    </div>
+    <div class="status-item">
+      <div class="status-dot"></div>
+      ML Engineer · Technical PM
+    </div>
+    <div class="status-item">
+      <div class="status-dot"></div>
+      Nepal · Remote Preferred
+    </div>
+  </div>
+
+  <!-- ══ BODY ══ -->
+  <div class="body-grid">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sidebar">
+
+      <!-- Stats -->
+      <div class="sb-section">
+        <div class="sb-label">At a Glance</div>
+        <div class="stat-row">
+          <div>
+            <div class="sb-stat">#61</div>
+            <div class="sb-stat-label">Nepal GitHub</div>
+          </div>
+          <div>
+            <div class="sb-stat">1K+</div>
+            <div class="sb-stat-label">Readers/wk</div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div>
+            <div class="sb-stat">98%</div>
+            <div class="sb-stat-label">SVM Accuracy</div>
+          </div>
+          <div>
+            <div class="sb-stat">89%</div>
+            <div class="sb-stat-label">DistilBERT</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Engineering -->
+      <div class="sb-section">
+        <div class="sb-label">AI Engineering</div>
+        <div class="pill-group">
+          <span class="pill accent">LLMs</span>
+          <span class="pill accent">RAG</span>
+          <span class="pill accent">Agentic AI</span>
+          <span class="pill">Fine-Tuning</span>
+          <span class="pill">LoRA / PEFT</span>
+          <span class="pill">Vector DBs</span>
+          <span class="pill">Knowledge Graphs</span>
+          <span class="pill">Prompt Eng.</span>
+          <span class="pill">Embeddings</span>
+        </div>
+      </div>
+
+      <!-- ML & Data -->
+      <div class="sb-section">
+        <div class="sb-label">ML &amp; Data Science</div>
+        <div class="pill-group">
+          <span class="pill">Deep Learning</span>
+          <span class="pill">NLP</span>
+          <span class="pill">Recommender Sys.</span>
+          <span class="pill">Computer Vision</span>
+          <span class="pill">MLOps</span>
+        </div>
+      </div>
+
+      <!-- Stack -->
+      <div class="sb-section">
+        <div class="sb-label">Languages &amp; Stack</div>
+        <div class="pill-group">
+          <span class="pill red">Python</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">Flask</span>
+          <span class="pill">ReactJS</span>
+          <span class="pill">SQL</span>
+        </div>
+      </div>
+
+      <!-- Infra -->
+      <div class="sb-section">
+        <div class="sb-label">Infrastructure</div>
+        <div class="pill-group">
+          <span class="pill">Docker</span>
+          <span class="pill">Kubernetes</span>
+          <span class="pill">Kafka</span>
+          <span class="pill">Microservices</span>
+          <span class="pill">Cloud Deploy</span>
+          <span class="pill">System Design</span>
+        </div>
+      </div>
+
+      <!-- Databases -->
+      <div class="sb-section">
+        <div class="sb-label">Databases</div>
+        <div class="pill-group">
+          <span class="pill">MongoDB</span>
+          <span class="pill">PostgreSQL</span>
+          <span class="pill">Chroma</span>
+          <span class="pill">Qdrant</span>
+        </div>
+      </div>
+
+      <!-- Leadership -->
+      <div class="sb-section">
+        <div class="sb-label">Leadership</div>
+        <div class="sb-item">AI Team Leadership</div>
+        <div class="sb-item">Agile Project Management</div>
+        <div class="sb-item">Technical Writing</div>
+        <div class="sb-item">Stakeholder Communication</div>
+        <div class="sb-item">Sprint Planning</div>
+      </div>
+
+    </aside>
+
+    <!-- ── MAIN ── -->
+    <main class="main">
+
+      <!-- Summary -->
+      <section class="section">
+        <div class="sec-heading">Profile</div>
+        <p class="summary-text">
+          AI/ML Engineer and Technical Project Manager with <strong>4+ years</strong> building production systems in Machine Learning, LLMs, Recommender Systems, and cloud-native AI infrastructure. Former <span class="highlight-tag">AI Team Lead</span> at Inflancer Technology; now building independently across AI, tooling, and open-source. Ranked <strong>#61 among Nepal's top open-source contributors</strong> on GitHub. Actively seeking <span class="highlight-tag">ML Engineer</span> or <span class="highlight-tag">Technical PM</span> roles.
+        </p>
+      </section>
+
+      <!-- Experience -->
+      <section class="section">
+        <div class="sec-heading">Experience</div>
+        <div class="jobs-wrap">
+
+          <div class="job">
+            <div class="job-meta">
+              <div>
+                <div class="job-title">AI Engineer &amp; AI Team Lead</div>
+                <div class="job-company">Inflancer Technology — Kathmandu, Nepal</div>
+              </div>
+              <div class="job-date">Apr 2024 – Dec 2025</div>
+            </div>
+            <ul class="bullets">
+              <li>Architected and deployed production <strong>Recommender Systems</strong> on Docker and Kubernetes, directly improving content personalisation and user engagement at scale.</li>
+              <li>Built NLP <strong>embedding-based semantic search</strong> to replace keyword lookups with intent-aware, contextually relevant content discovery.</li>
+              <li>Designed scalable AI microservices integrating <strong>Kafka</strong> for real-time data pipelines and event-driven processing on cloud infrastructure.</li>
+              <li>Led cross-functional AI collaboration across product, engineering, and business — translating model capabilities into measurable outcomes.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-meta">
+              <div>
+                <div class="job-title">Project Manager</div>
+                <div class="job-company">Inflancer Technology — Kathmandu, Nepal</div>
+              </div>
+              <div class="job-date">Oct 2024 – Dec 2025</div>
+            </div>
+            <ul class="bullets">
+              <li>Drove end-to-end delivery of AI and product initiatives using <strong>Agile methodologies</strong>, owning sprint planning, risk mitigation, and stakeholder alignment.</li>
+              <li>Coordinated cross-functional teams to maintain on-time, high-quality releases with clear communication up to leadership.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-meta">
+              <div>
+                <div class="job-title">ML Engineer &amp; Research Contributor</div>
+                <div class="job-company">Freelance / ResearchGrad — Nepal</div>
+              </div>
+              <div class="job-date">Jan 2019 – 2024</div>
+            </div>
+            <ul class="bullets">
+              <li>Fine-tuned a <strong>Llama-2 7B</strong> model on a custom code-description dataset, shipping a fully functional Python code generator.</li>
+              <li>Built a real-time hand gesture recognition system with <strong>CNNs and OpenCV</strong>, deployed live via Vercel.</li>
+              <li>Contributed to ML research on <strong>Nepali Music Genre Classification</strong> and <a href="https://github.com/abhiverse01/hatespeech-multimodal-detection" target="_blank">Multi-modal Hate Speech Detection</a>, supporting a mentor's M.Sc. thesis.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-meta">
+              <div>
+                <div class="job-title">ML Intern</div>
+                <div class="job-company">Codsoft — Bangalore, India</div>
+              </div>
+              <div class="job-date">Oct – Nov 2023</div>
+            </div>
+            <ul class="bullets">
+              <li>Built credit card fraud detection and customer churn prediction models; achieved <strong>86.55% accuracy</strong> with Random Forest, SMOTE, and hyperparameter tuning.</li>
+              <li>Delivered an SVM spam classifier at <strong>98% accuracy</strong> and an NLP movie genre classifier with a production-ready interface.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-meta">
+              <div>
+                <div class="job-title">ML Mentor</div>
+                <div class="job-company">ACES Bootcamp — Dharan, Nepal</div>
+              </div>
+              <div class="job-date">Feb 2024</div>
+            </div>
+            <ul class="bullets">
+              <li>Mentored students through ML fundamentals, live debugging, and model improvement during a week-long intensive training camp.</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="section">
+        <div class="sec-heading">Projects</div>
+        <div class="projects-grid">
+
+          <div class="proj-card" data-index="01">
+            <div class="proj-name">
+              TitanML
+              <a class="proj-link" href="https://abhiverse01.github.io/titanML/" target="_blank">↗ Live</a>
+            </div>
+            <p class="proj-desc">Zero-dependency, physics-powered AI knowledge graph engine with interactive bubble-graph visualization. Explores AI concept relationships dynamically — no external libraries required.</p>
+          </div>
+
+          <div class="proj-card" data-index="02">
+            <div class="proj-name">
+              Test Maker Engine
+              <a class="proj-link" href="https://abhiverse01.github.io/test-maker/" target="_blank">↗ Live</a>
+            </div>
+            <p class="proj-desc">Zero-backend quiz engine — pure HTML/CSS/JS/JSON. 50 randomised questions, keyboard nav, dark/light mode, session resume, rich results breakdown. Fully open-source for educators.</p>
+          </div>
+
+          <div class="proj-card" data-index="03">
+            <div class="proj-name">
+              CodeBeing
+              <a class="proj-link" href="https://projectcodebeing.vercel.app/" target="_blank">↗ Live</a>
+            </div>
+            <p class="proj-desc">Natural language-to-Python code generator powered by a fine-tuned Llama-2 7B model. Built with ReactJS and deployed on Vercel.</p>
+          </div>
+
+          <div class="proj-card" data-index="04">
+            <div class="proj-name">
+              Sentiment Analyzer
+              <a class="proj-link" href="https://github.com/abhiverse01/SentimentAnalysis-DistilBERT" target="_blank">↗ GitHub</a>
+            </div>
+            <p class="proj-desc">NLP sentiment classification using DistilBERT, achieving 89% accuracy on benchmark datasets.</p>
+          </div>
+
+          <div class="proj-card" data-index="05">
+            <div class="proj-name">
+              Hand Gesture Recognizer
+              <a class="proj-link" href="https://github.com/abhiverse01/hand-gesture-recognizer" target="_blank">↗ GitHub</a>
+            </div>
+            <p class="proj-desc">CNN + OpenCV pipeline for real-time gesture-to-sign-language translation. Built for accessibility applications.</p>
+          </div>
+
+          <div class="proj-card" data-index="06">
+            <div class="proj-name">
+              Flappy Bird: God Mode
+              <a class="proj-link" href="https://abhiverse01.github.io/Flappy-Bird/" target="_blank">↗ Live</a>
+            </div>
+            <p class="proj-desc">AI-augmented variant with adaptive difficulty and enhanced game mechanics — built to explore algorithmic game logic and agent-driven behaviour.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section class="section">
+        <div class="sec-heading">Education</div>
+        <div class="edu-block">
+          <div>
+            <div class="edu-degree">Bachelor of Computer Engineering</div>
+            <div class="edu-school">IOE, ERC — Tribhuvan University, Nepal</div>
+            <div class="edu-courses">
+              <span>Data Mining</span>
+              <span>OOP &amp; Design</span>
+              <span>Artificial Intelligence</span>
+              <span>Theory of Computation</span>
+            </div>
+          </div>
+          <div class="job-date" style="margin-top:0">Class of 2019</div>
+        </div>
+      </section>
+
+      <!-- Community -->
+      <section class="section">
+        <div class="sec-heading">Community &amp; Leadership</div>
+        <ul class="bullets">
+          <li><strong>#61 in Nepal – Top GitHub Committers:</strong> Ranked among Nepal's most active open-source contributors on the global top.committers leaderboard.</li>
+          <li><strong>Tech Writer on Medium:</strong> Weekly articles on LLMs, AI engineering, and software tools — reaching <strong>1K+ readers/week</strong>. <a href="https://medium.com/@abhiverse01" target="_blank">Profile ↗</a></li>
+          <li><strong>Industry Case Studies:</strong> Independently researching how AI-driven companies (Spotify, Netflix, Airbnb) architect and monetize their ML systems — insights applied to engineering and product decisions.</li>
+          <li><strong>Open-Source Education:</strong> Maintains <a href="https://github.com/abhiverse01/the-coders-handbook" target="_blank">The Coder's Handbook</a>, <a href="https://github.com/abhiverse01/how-I-learned-python" target="_blank">how-I-learned-python</a>, and <a href="https://github.com/abhiverse01/how-I-learned-ml-repo" target="_blank">how-I-learned-ml</a> as structured beginner guides.</li>
+          <li><strong>Deltathon Organizer:</strong> Managed logistics and coordination for the ACES major hackathon; later competed as Team ZAV.</li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <div class="footer-band">
+    <div class="mono">Abhishek Shah &mdash; <span>AI/ML Engineer</span></div>
+    <div class="mono"><span>abhishek.aimarine@gmail.com</span> · Kathmandu, Nepal</div>
+    <div class="mono">2025</div>
+  </div>
+
+</div>
+
+</body>
+</html>
